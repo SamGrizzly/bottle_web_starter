@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader
 from bottle import route, run
 import bottle
+import random
 
 
 JINJA_ENV = Environment(
@@ -13,6 +14,15 @@ def say_hi(name):
     return respond('hi.html',
     	{
 	    'name': name
+	})
+
+@route('/image')	
+def show_image():
+	return respond('image.html',
+	{
+		'green': random.randint(0,255),
+		'red': random.randint(0,255),
+		'blue': random.randint(0,255)
 	})
 
 
